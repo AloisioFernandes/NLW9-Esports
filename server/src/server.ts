@@ -20,4 +20,10 @@ app.get('/games/:id/ads', (request, response) => {
   ])
 })
 
+app.get('/ads/:id/discord', (request, response) => {
+  // const gameId = request.params.id
+
+  return response.json([])
+})
+
 app.listen(3333)
