@@ -2,6 +2,9 @@ import express from 'express'
 import { PrismaClient } from '@prisma/client'
 
 const app = express()
+
+app.use(express.json())
+
 const prisma = new PrismaClient()
 
 app.get('/games', async (request, response) => {
@@ -18,8 +21,24 @@ app.get('/games', async (request, response) => {
   return response.json(games)
 })
 
-app.post('/ads', (request, response) => {
-  return response.status(201).json([])
+app.post('/games/:id/ads', async (request, response) => {
+  const gameId = request.params.id
+  const body = request.body
+
+  const ad = await prisma.ad.create({
+    data: {
+      gameId,
+      name: body.name,
+      yearsPlaying: body.yearsPlaying,
+      discord: body.discord,
+      weekDays: body.weekDays.join(','),
+      hourStart: body.hourStart,
+      hourEnd: body.hourEnd,
+      useVoiceChannel: body.useVoiceChannel,
+    }
+  })
+
+  return response.status(201).json(body)
 })
 
 app.get('/games/:id/ads', async (request, response) => {
@@ -68,4 +87,4 @@ app.get('/ads/:id/discord', async (request, response) => {
   })
 })
 
-app.listen(3333)
+app.listen(3333) 
