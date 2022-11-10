@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import { CreateAdBanner } from './components/CreateAdBanner'
 import { GameBanner } from './components/GameBanner'
 
@@ -6,6 +8,14 @@ import './styles/main.css'
 import logoImg from './assets/logo-nlw-esports.svg'
 
 function App() {
+  const [games, setGames] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3333/games')
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }, [])
+
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
       <img src={logoImg} alt="" />
