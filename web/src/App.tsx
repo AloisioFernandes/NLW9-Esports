@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import * as Dialog from '@radix-ui/react-dialog'
 
 import { CreateAdBanner } from './components/CreateAdBanner'
 import { GameBanner } from './components/GameBanner'
@@ -38,7 +39,8 @@ function App() {
       <div className="grid grid-cols-6 gap-6 mt-16">
         {games.map(game => {
           return (
-            <GameBanner 
+            <GameBanner
+              key={game.id}
               bannerUrl={game.bannerUrl} 
               title={game.title}
               adsCount={game._count.ads} 
@@ -48,7 +50,21 @@ function App() {
         })}
       </div>
 
-      <CreateAdBanner />
+      <Dialog.Root>
+        <CreateAdBanner />
+
+        <Dialog.Portal>
+          <Dialog.Overlay />
+
+          <Dialog.Content>
+            <Dialog.Title>Publique um anúncio</Dialog.Title>
+
+            <Dialog.Content>
+              
+            </Dialog.Content>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </div>
   )
 }
