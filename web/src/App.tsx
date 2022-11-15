@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
+import { GameController } from 'phosphor-react'
 
 import { CreateAdBanner } from './components/CreateAdBanner'
 import { GameBanner } from './components/GameBanner'
@@ -60,10 +61,14 @@ function App() {
             <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
 
             <Dialog.Content>
-              <form>
-                <div>
-                  <label htmlFor="game">Qual o game</label>
-                  <input id="game" placeholder="Selecione o game que deseja jogar" />
+              <form className="mt-8">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="game" className="font-semibold">Qual o game</label>
+                  <input 
+                    id="game" 
+                    placeholder="Selecione o game que deseja jogar" 
+                    className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500"
+                  />
                 </div>
 
                 <div>
@@ -94,6 +99,19 @@ function App() {
                     </div>
                   </div>
                 </div>
+
+                <div>
+                  <input type="checkbox" />
+                  Costumo me conectar ao chat de voz
+                </div>
+
+                <footer>
+                  <button>Cancelar</button>
+                  <button type="submit">
+                    <GameController />
+                    Encontrar duo
+                  </button>
+                </footer>
               </form>
             </Dialog.Content>
           </Dialog.Content>
