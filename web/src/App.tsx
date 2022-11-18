@@ -85,25 +85,35 @@ function App() {
                 </div>
               </div>
 
-              <div>
-                <div>
+              <div className="flex gap-6">
+                <div className="flex flex-col gap-2">
                   <label htmlFor="weekDays">Quando costuma jogar?</label>
+
+                  <div className="grid grid-cols-4 gap-2">
+                    <button className="w-8 h-8 rounded bg-zinc-900" title="Domingo">D</button>
+                    <button className="w-8 h-8 rounded bg-zinc-900" title="Segunda">S</button>
+                    <button className="w-8 h-8 rounded bg-zinc-900" title="Terça">T</button>
+                    <button className="w-8 h-8 rounded bg-zinc-900" title="Quarta">Q</button>
+                    <button className="w-8 h-8 rounded bg-zinc-900" title="Quinta">Q</button>
+                    <button className="w-8 h-8 rounded bg-zinc-900" title="Sexta">S</button>
+                    <button className="w-8 h-8 rounded bg-zinc-900" title="Sábado">S</button>
+                  </div>
                 </div>
-                <div>
+                <div className="flex flex-col gap-2 flex-1">
                   <label htmlFor="hourStart">Qual horário do dia?</label>
-                  <div>
+                  <div className="grid grid-cols-2 gap-2">
                     <Input id="hourStart" type="time" placeholder="De" />
                     <Input id="hourEnd" type="time" placeholder="Até" />
                   </div>
                 </div>
               </div>
 
-              <div>
+              <div className="mt-2 flex gap-2 text-sm">
                 <Input type="checkbox" />
                 Costumo me conectar ao chat de voz
               </div>
 
-              <footer>
+              <footer className="mt-4 flex justify-end">
                 <button>Cancelar</button>
                 <button type="submit">
                   <GameController />
