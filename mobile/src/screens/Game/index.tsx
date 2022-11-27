@@ -5,6 +5,7 @@ import { useRoute } from '@react-navigation/native'
 import { Entypo } from '@expo/vector-icons'
 
 import { Background } from '../../components/Background';
+import { Heading } from '../../components/Heading';
 import logoImg from '../../assets/logo-nlw-esports.png'
 
 import { GameParams } from '../../@types/navigation';
@@ -32,7 +33,14 @@ export function Game() {
             source={logoImg}
             style={styles.logo}
           />
+
+          <View style={styles.right} />
         </View>
+
+        <Heading 
+          title={game.title}
+          subtitle="Conecte-se e comece a jogar!"
+        />
       </SafeAreaView>
     </Background>
   );
