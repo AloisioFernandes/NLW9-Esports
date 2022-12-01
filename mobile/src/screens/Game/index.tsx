@@ -6,6 +6,7 @@ import { Entypo } from '@expo/vector-icons'
 
 import { Background } from '../../components/Background';
 import { Heading } from '../../components/Heading';
+import { DuoCard } from '../../components/DuoCard';
 import logoImg from '../../assets/logo-nlw-esports.png'
 
 import { GameParams } from '../../@types/navigation';
@@ -52,6 +53,8 @@ export function Game() {
           title={game.title}
           subtitle="Conecte-se e comece a jogar!"
         />
+
+        <DuoCard />
       </SafeAreaView>
     </Background>
   );
