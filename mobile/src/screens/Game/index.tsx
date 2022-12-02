@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native'
@@ -15,6 +15,8 @@ import { THEME } from '../../theme';
 import { styles } from './styles';
 
 export function Game() {
+  const [duos, setDuos] = useState([])
+
   const navigation = useNavigation()
   const route = useRoute()
   const game = route.params as GameParams
@@ -22,6 +24,12 @@ export function Game() {
   function handleGoBack() {
     navigation.goBack()
   }
+
+  useEffect(() => {
+    fetch(`http://192.168.1.2:3333/games/${game.id}/ads`)
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }, [])
 
   return (
     <Background>
