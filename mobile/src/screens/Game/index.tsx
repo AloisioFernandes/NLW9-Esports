@@ -7,6 +7,7 @@ import { Entypo } from '@expo/vector-icons'
 import { Background } from '../../components/Background';
 import { Heading } from '../../components/Heading';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { DuoMatch } from '../../components/DuoMatch';
 import logoImg from '../../assets/logo-nlw-esports.png'
 
 import { GameParams } from '../../@types/navigation';
@@ -80,6 +81,11 @@ export function Game() {
               Não há anúncios publicados ainda.
             </Text>
           )}
+        />
+
+        <DuoMatch 
+          visible={true}
+          discord="al#1212"
         />
       </SafeAreaView>
     </Background>
