@@ -6,6 +6,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: THEME.COLORS.OVERLAY,
+  },
+
+  content: {
+    width: 111,
+    backgroundColor: THEME.COLORS.SHAPE,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   discord: {
