@@ -17,6 +17,7 @@ import { styles } from './styles';
 
 export function Game() {
   const [duos, setDuos] = useState<DuoCardProps[]>([])
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('')
 
   const navigation = useNavigation()
   const route = useRoute()
@@ -84,8 +85,9 @@ export function Game() {
         />
 
         <DuoMatch 
-          visible={true}
+          visible={discordDuoSelected.length > 0}
           discord="al#1212"
+          onClose={() => setDiscordDuoSelected('')}
         />
       </SafeAreaView>
     </Background>

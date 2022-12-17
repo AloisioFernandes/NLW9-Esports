@@ -8,9 +8,10 @@ import { THEME } from '../../theme';
 
 interface Props extends ModalProps {
   discord: string;
+  onClose: () => void;
 }
 
-export function DuoMatch({ discord, ...rest }: Props) {
+export function DuoMatch({ discord, onClose, ...rest }: Props) {
   return (
     <Modal 
       transparent 
@@ -19,7 +20,10 @@ export function DuoMatch({ discord, ...rest }: Props) {
     >
       <View style={styles.container}>
         <View style={styles.content}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            style={styles.closeIcon}
+            onPress={onClose}
+          >
             <MaterialIcons 
               name='close'
               size={20}
