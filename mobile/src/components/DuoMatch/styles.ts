@@ -22,6 +22,14 @@ export const styles = StyleSheet.create({
     margin: 16
   },
 
+  label: {
+    color: THEME.COLORS.TEXT,
+    fontSize: THEME.FONT_SIZE.MD,
+    fontFamily: THEME.FONT_FAMILY.SEMI_BOLD,
+    marginTop: 24,
+    marginBottom: 8
+  },
+
   discord: {
     color: THEME.COLORS.TEXT,
     fontSize: THEME.FONT_SIZE.MD,
