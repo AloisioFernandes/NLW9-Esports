@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, Modal, Text, ModalProps, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Modal, Text, ModalProps, TouchableOpacity, Alert } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 import { CheckCircle } from 'phosphor-react-native'
+import * as Clipboard from 'expo-clipboard'
 
 import { Heading } from '../Heading';
 import { THEME } from '../../theme';
@@ -15,6 +16,14 @@ interface Props extends ModalProps {
 }
 
 export function DuoMatch({ discord, onClose, ...rest }: Props) {
+  const [isCopying, setIsCopying] = useState(false)
+
+  async function handleCopyDiscordToClipboard() {
+    await Clipboard.setStringAsync(discord)
+
+    Alert.alert('Dircord Copiado!', 'Usuário copiado para você colocar no Discord e encontrar a pessoa.')
+  }
+
   return (
     <Modal
       animationType='fade'
@@ -53,6 +62,7 @@ export function DuoMatch({ discord, onClose, ...rest }: Props) {
 
           <TouchableOpacity
             style={styles.discordButton}
+            onPress={handleCopyDiscordToClipboard}
           >
             <Text style={styles.discord}>
               {discord}
@@ -63,3 +73,4 @@ export function DuoMatch({ discord, onClose, ...rest }: Props) {
     </Modal>
   );
 }
+// 1:11:00
