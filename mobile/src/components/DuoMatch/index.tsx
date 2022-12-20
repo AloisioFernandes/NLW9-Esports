@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Modal, Text, ModalProps, TouchableOpacity, Alert } from 'react-native';
+import { View, Modal, Text, ModalProps, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 import { CheckCircle } from 'phosphor-react-native'
 import * as Clipboard from 'expo-clipboard'
@@ -19,9 +19,11 @@ export function DuoMatch({ discord, onClose, ...rest }: Props) {
   const [isCopying, setIsCopying] = useState(false)
 
   async function handleCopyDiscordToClipboard() {
+    setIsCopying(true)
     await Clipboard.setStringAsync(discord)
 
-    Alert.alert('Dircord Copiado!', 'Usuário copiado para você colocar no Discord e encontrar a pessoa.')
+    Alert.alert('Dircord Copiado!', 'Usuário copiado para área de transferência.')
+    setIsCopying(false)
   }
 
   return (
@@ -63,9 +65,10 @@ export function DuoMatch({ discord, onClose, ...rest }: Props) {
           <TouchableOpacity
             style={styles.discordButton}
             onPress={handleCopyDiscordToClipboard}
+            disabled={isCopying}
           >
             <Text style={styles.discord}>
-              {discord}
+              {isCopying ? <ActivityIndicator color={THEME.COLORS.PRIMARY} /> : discord}
             </Text>
           </TouchableOpacity>
         </View>
@@ -73,4 +76,3 @@ export function DuoMatch({ discord, onClose, ...rest }: Props) {
     </Modal>
   );
 }
-// 1:11:00
